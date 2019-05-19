@@ -7,14 +7,8 @@ import buildMessage from "./components/message.js";
 export const stateChangeEvent = new Event(EVENTS.STATE_CHANGE);
 
 export const buildView = event => {
-  console.log(getState().fields);
   buildMessage();
   buildFields();
-};
-
-export const colorClick = event => {
-  // TODO
-  console.log("color adder not working yet");
 };
 
 export const cellClick = ({ target }) => {
@@ -35,6 +29,33 @@ export const cellClick = ({ target }) => {
 
 const inputGrid = document.querySelector("#grid");
 const random = numberOfColors => Math.floor(Math.random() * numberOfColors);
+const setColors = () => {
+  let colorInputs = [
+    ...document.querySelectorAll('.colors > input[type="color"]')
+  ];
+  let { numberOfColors, defaultColors } = getState();
+  let colors = colorInputs.map(({ value }) => value);
+  colors = colors.length ? colors : defaultColors;
+  setState({ colors, numberOfColors: colors.length });
+};
+
+export const colorClick = event => {
+  let hexColor = c => {
+    let hex = c.toString(16);
+    return hex.length === 1 ? "0" + hex : hex;
+  };
+  const randomColor = () => hexColor(Math.floor(Math.random() * 257));
+
+  let colorButton = document.querySelector("#color");
+  let colorsContainer = document.querySelector(".colors");
+  let colorInput = document.createElement("input");
+
+  colorInput.setAttribute("type", "color");
+  colorInput.value = `#${randomColor()}${randomColor()}${randomColor()}`;
+  colorsContainer.insertBefore(colorInput, colorButton);
+
+  setColors();
+};
 
 export const startClick = event => {
   let gridSize = +inputGrid.value;
@@ -61,7 +82,24 @@ export const startClick = event => {
       fields.push({ row: i, col: j, color: random(numberOfColors) });
     }
   }
+  setColors();
   gridSize = gridSize || getState().gridSize;
   message = { ...message, text, customClass };
   setState({ message, gridSize, fields });
+};
+export const downClick = event => {
+  let { value } = inputGrid;
+  if (value && +value === +value && +value > 1) {
+    inputGrid.value = +value - 1;
+  } else {
+    inputGrid.value = 1;
+  }
+};
+export const upClick = event => {
+  let { value } = inputGrid;
+  if (value && +value === +value && +value > 1) {
+    inputGrid.value = +value + 1;
+  } else {
+    inputGrid.value = 1;
+  }
 };

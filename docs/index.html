@@ -14,19 +14,31 @@
   <body>
     <div class="ui container">
       <div class="starter">
-        <h2>Enter starting values</h2>
+        <h3>Enter starting values</h3>
         <div class="ui input">
+          <button id="down" class="ui icon button basic negative">
+            <i class="angle double down icon"></i>
+          </button>
           <input
             placeholder="Enter number of rows"
             value="6"
             type="number"
             id="grid"
           />
-          <button id="color" class="ui button basic blue">Add Color</button>
+          <button id="up" class="ui icon button basic positive">
+            <i class="angle double up icon"></i>
+          </button>
         </div>
-        <div class="colors"></div>
+        <div class="colors">
+          <input type="color" value="#fa8072" />
+          <input type="color" value="#0080ff" />
+          <input type="color" value="#50c878" />
+          <button id="color" class="ui button tiny teal">
+            Add Color
+          </button>
+        </div>
         <div>
-          <button class="ui button basic blue huge" id="start" type="button">
+          <button class="ui button basic blue big" id="start" type="button">
             Start
           </button>
         </div>
