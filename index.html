@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vanilla SPA</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="ui container">
+      <div class="starter">
+        <h2>Enter starting values</h2>
+        <div class="ui input">
+          <input
+            placeholder="Enter number of rows"
+            value="6"
+            type="number"
+            id="grid"
+          />
+          <button id="color" class="ui button basic blue">Add Color</button>
+        </div>
+        <div class="colors"></div>
+        <div>
+          <button class="ui button basic blue huge" id="start" type="button">
+            Start
+          </button>
+        </div>
+      </div>
+      <div id="message" class="ui message negative hide"></div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>
