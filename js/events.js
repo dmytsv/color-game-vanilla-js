@@ -56,6 +56,14 @@ export const colorClick = event => {
 
   setColors();
 };
+export const deleteColorClick = event => {
+  const colorList = document.querySelectorAll('.colors > input[type="color"]');
+  const { length } = colorList;
+  const input = colorList[length - 1];
+
+  input.remove();
+  setColors();
+};
 
 export const startClick = event => {
   let gridSize = +inputGrid.value;
