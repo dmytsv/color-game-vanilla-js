@@ -105,7 +105,7 @@ export const downClick = event => {
 };
 export const upClick = event => {
   let { value } = inputGrid;
-  if (value && +value === +value && +value > 1) {
+  if (value && +value === +value && +value >= 1) {
     inputGrid.value = +value + 1;
   } else {
     inputGrid.value = 1;
