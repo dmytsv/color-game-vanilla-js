@@ -45,7 +45,14 @@ button#color {
 #root .field-container {
   display: flex;
   flex-wrap: wrap;
-  width: 70vmin;
-  height: 70vmin;
+  width: 75vmin;
+  height: 75vmin;
   border-collapse: collapse;
+}
+
+@media only screen and (max-width: 568px) {
+  #root .field-container {
+    width: 95vmin;
+    height: 95vmin;
+  }
 }

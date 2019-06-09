@@ -2,7 +2,7 @@ import { setState, getState } from "../state.js";
 import { cellClick } from "../events.js";
 
 export default ({ gridSize, color, row, col }) => {
-  const size = Math.floor(100 / gridSize);
+  const size = Math.floor(10000 / gridSize) / 100;
   const field = document.createElement("div");
   field.style.cssText = `
   flex: 1 0 ${size}%; 
